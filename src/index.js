@@ -11,10 +11,11 @@ app.get("/", (request, response) =>{
 });
 
 app.post("/account", (request,response) =>{
-    const { userName, password } = request.body
+    const { userName, email, password, } = request.body
 
     users.push({
         userName,
+        email,
         password,
         ID: uuidv4(),
     });
@@ -31,7 +32,12 @@ app.get("/searchUser", (request, response) =>{
         return response.status(400).json({error: "User not found"})
     }
 
-    return response.status(201).send(user); 
+    const resp = users.map(userExibition => ({
+        userName: userExibition.userName,
+        email: userExibition.email,
+        ID: userExibition.ID
+    }));
+    return response.status(201).send(resp); 
 })
 
 app.listen(8000);
