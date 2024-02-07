@@ -22,5 +22,16 @@ app.post("/account", (request,response) =>{
     return response.status(201).send();
 });
 
+app.get("/searchUser", (request, response) =>{
+    const { name } = request.headers;
+
+    const user = users.find((user) => user.userName === name);
+ 
+    if(!user){
+        return response.status(400).json({error: "User not found"})
+    }
+
+    return response.status(201).send(user); 
+})
 
 app.listen(8000);
