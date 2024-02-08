@@ -6,6 +6,24 @@ app.use(express.json());
 
 const users = []
 
+function verifyUser(request, response, next){
+    const { email, password } = request.headers;
+
+    const userEmail = users.find((userEmail) => userEmail.email === email)
+
+    if(!userEmail){
+        return response.status(400).json({ error: "Email not found" })
+    }
+
+    const userPassword = users.find((userPassword) => userPassword.password === password)
+
+    if(!userPassword){
+        return response.status(400).json({ error: "Wrong password" })
+    }
+    request.userEmail = userEmail;
+    return next();
+}
+
 app.get("/", (request, response) =>{
     return response.status(200).json({"check": "Hellow world !"})
 });
