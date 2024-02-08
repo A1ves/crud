@@ -58,4 +58,19 @@ app.get("/searchUser", (request, response) =>{
     return response.status(201).send(resp); 
 })
 
+app.put("/account", verifyUser, (request,response) =>{
+    const { email } = request.headers;
+    const { name } = request.body;
+
+    console.log(email)
+    console.log(name)
+
+
+    const user = users.find((user) => user.email === email);
+
+    user.userName = name;
+
+    return response.status(201).send(user)
+})
+
 app.listen(8000);
