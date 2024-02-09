@@ -15,10 +15,10 @@ Este é um projeto CRUD simples desenvolvido para estudo, com foco na criação,
    - Adicione novos usuários informando nome, e-mail e senha.
 
 2. **Consulta de Usuários:**
-   - Visualize a lista de usuários cadastrados.
+   - Visualize o usuário cadastrado pelo nome.
 
 3. **Edição de Usuários:**
-   - Atualize as informações dos usuários, como nome, e-mail e senha.
+   - Atualize o nome do usuario.
 
 4. **Exclusão de Usuários:**
    - Remova usuários da base de dados.
