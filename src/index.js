@@ -66,7 +66,10 @@ app.get("/searchUser", (request, response) =>{
         email: userExibition.email,
         ID: userExibition.ID
     }));
-    return response.status(201).send(resp); 
+
+    const index = resp.findIndex(user => user.userName === name);
+
+    return response.status(201).send(resp[index]); 
 })
 
 app.put("/account", verifyUser, (request,response) =>{
