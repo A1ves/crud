@@ -62,15 +62,21 @@ app.put("/account", verifyUser, (request,response) =>{
     const { email } = request.headers;
     const { name } = request.body;
 
-    console.log(email)
-    console.log(name)
-
-
     const user = users.find((user) => user.email === email);
 
     user.userName = name;
 
     return response.status(201).send(user)
+})
+
+app.delete("/account" ,verifyUser, (request, response) =>{
+    const { email } = request.headers;
+
+    const index = users.indexOf(email);
+
+    users.splice(index, 1);
+
+    return response.status(200).send(users)
 })
 
 app.listen(8000);
