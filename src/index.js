@@ -27,6 +27,14 @@ function verifyUser(request, response, next){
 app.post("/account", (request,response) =>{
     const { userName, email, password, } = request.body
 
+    if(!userName){
+        return response.status(400).json({"user": "not found"});
+    }else if(!email){
+        return response.status(400).json({"email": "not found"});
+    }else if(!password){
+        return response.status(400).json({"password": "not found"});
+    }
+
     const user = users.find((user) => user.email === email);
 
     if(!user){
@@ -75,11 +83,13 @@ app.put("/account", verifyUser, (request,response) =>{
 app.delete("/account" ,verifyUser, (request, response) =>{
     const { email } = request.headers;
 
-    const index = users.indexOf(email);
+    // const index = users.indexOf(email);
+    const index = users.findIndex(user => user.email === email);
+
 
     users.splice(index, 1);
 
-    return response.status(200).send(users)
+    return response.status(200).send(users);
 })
 
 app.listen(8000);
