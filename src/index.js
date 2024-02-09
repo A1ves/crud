@@ -86,7 +86,6 @@ app.put("/account", verifyUser, (request,response) =>{
 app.delete("/account" ,verifyUser, (request, response) =>{
     const { email } = request.headers;
 
-    // const index = users.indexOf(email);
     const index = users.findIndex(user => user.email === email);
 
 
