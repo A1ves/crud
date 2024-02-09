@@ -24,10 +24,6 @@ function verifyUser(request, response, next){
     return next();
 }
 
-app.get("/", (request, response) =>{
-    return response.status(200).json({"check": "Hellow world !"})
-});
-
 app.post("/account", (request,response) =>{
     const { userName, email, password, } = request.body
 
