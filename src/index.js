@@ -27,14 +27,21 @@ function verifyUser(request, response, next){
 app.post("/account", (request,response) =>{
     const { userName, email, password, } = request.body
 
-    users.push({
-        userName,
-        email,
-        password,
-        ID: uuidv4(),
-    });
+    const user = users.find((user) => user.email === email);
 
-    return response.status(201).send();
+    if(!user){
+        users.push({
+            userName,
+            email,
+            password,
+            ID: uuidv4(),
+        });
+    
+        return response.status(201).send();
+    }
+
+    return response.status(400).json({ error: "user already created" })
+
 });
 
 app.get("/searchUser", (request, response) =>{
