@@ -1,0 +1,82 @@
+{
+    "openapi": "3.1.0",
+    "info":{
+        "title": "CRUD",
+        "description": "Este é um projeto CRUD simples desenvolvido para estudo, com foco na criação, edição, exclusão e consulta de usuários.",
+        "contact":{
+            "name": "Ayron Alves",
+            "url": "https://github.com/A1ves",
+            "email": "ayronwork@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "API to user"
+        }
+    ],
+    "paths":{
+        "/account":{
+            "post":{
+                "summary": "Criação de usuário",
+                "description": "Esta rota é responsavel por cadastrar um novo usuario",
+                "tags": ["User"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples":{
+                                "user":{
+                                    "value":{
+                                        "userName": "User",
+                                        "email": "email@test.com",
+                                        "password": "1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "400":{
+                        "description": "not found"
+                    },
+                    "201":{
+                        "description": "created",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "schemas":{
+            "User":{
+                "type": "object",
+                "properties": {
+                    "userName":{
+                        "type": "string"
+                    },
+                    "email":{
+                        "type": "string"
+                    },
+                    "password":{
+                        "type":"string"
+                    },
+                    "id":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}

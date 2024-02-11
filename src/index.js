@@ -1,8 +1,13 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 const users = []
 
