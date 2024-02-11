@@ -56,6 +56,34 @@
                     }
                 }
             }
+        },
+        "/searchUser":{
+            "get":{
+                "summary": "Busca de usuario",
+                "description": "Esta rota é responsavel por buscar o usuario pelo nome",
+                "tags": ["User"],
+                "parameters":[{
+                    "name": "name",
+                    "in": "header",
+                    "description": "Nome do usuario para busca",
+                    "required": true
+                }],
+                "responses":{
+                    "400":{
+                        "description": "not found"
+                    },
+                    "201":{
+                        "description": "created",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components":{
