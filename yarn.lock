@@ -727,6 +727,11 @@ swagger-ui-dist@>=5.0.0:
   resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.11.3.tgz#64c96e90b6a352e7b20a55b73b91fc0e0bed4f0a"
   integrity sha512-vQ+Pe73xt7vMVbX40L6nHu4sDmNCM6A+eMVJPGvKrifHQ4LO3smH0jCiiefKzsVl7OlOcVEnrZ9IFzYwElfMkA==
 
+swagger-ui-dist@^5.11.4:
+  version "5.11.4"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.11.4.tgz#bab6d320a7e9c9b73018ea747f695b83b184ef23"
+  integrity sha512-2rxWfHXIKCcCP/V1Y89MV1vmnTc6J0hRLzPAWtkM2BYnolVE0iNrHGGQRneiuo5/g4kYa5Kyk8DxPRqr4WWQ1w==
+
 swagger-ui-express@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-5.0.0.tgz#7a00a18dd909574cb0d628574a299b9ba53d4d49"
