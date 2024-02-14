@@ -78,38 +78,41 @@
                         "schema": {
                             "type": "string"
                         }
-                    },
-                    {
-                        "name": "name",
-                        "in": "body",
-                        "description": "Nome do usuário para alterar",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "UsernameNew"
-                                }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Nome do usuário para alterar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["name"]
                             }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "400": {
                         "description": "not found"
                     },
-                    "201":{
+                    "201": {
                         "description": "created",
-                        "content":{
-                            "application/json":{
-                                "schema":{
+                        "content": {
+                            "application/json": {
+                                "schema": {
                                     "$ref": "#/components/schemas/User"
                                 }
                             }
                         }
                     }
                 }
-            }            
+            }                                   
         },
         "/searchUser":{
             "get":{
