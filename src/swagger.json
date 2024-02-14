@@ -112,6 +112,47 @@
                         }
                     }
                 }
+            },
+            "delete":{
+                "summary": "Deleta o usuário",
+                "description": "Esta rota é responsável por deletar o usuário",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "header",
+                        "description": "Email do usuário a ser deletado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "header",
+                        "description": "Senha do email do usuário a ser deletado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "not found"
+                    },
+                    "201": {
+                        "summary": "Ira retornar os outros usuarios cadastrados",
+                        "description": "deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                } 
             }                                   
         },
         "/searchUser":{
