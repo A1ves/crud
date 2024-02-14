@@ -55,7 +55,61 @@
                         }
                     }
                 }
-            }
+            },
+            "put": {
+                "summary": "Alterar o nome do usuário",
+                "description": "Esta rota é responsável por alterar o nome do usuário",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "header",
+                        "description": "Email do usuário a ser alterado o nome",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "header",
+                        "description": "Senha do email do usuário a ser alterado o nome",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "Nome do usuário para alterar",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "UsernameNew"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "not found"
+                    },
+                    "201":{
+                        "description": "created",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
         },
         "/searchUser":{
             "get":{
