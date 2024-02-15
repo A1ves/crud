@@ -6,6 +6,12 @@ const swaggerDocument = require('./swagger.json');
 
 app.use(express.json());
 
+// Caminho para o arquivo swagger.json
+const swaggerDocument = require('./src/swagger.json');
+
+// Caminho para os arquivos estáticos do Swagger UI
+app.use('/api-docs', express.static(path.join(__dirname, 'src/public/api-docs/swagger-ui-dist')));
+
 app.use('/api-docs', swaggerUi.serve);
 app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
