@@ -6,11 +6,8 @@ const swaggerDocument = require('./swagger.json');
 
 app.use(express.json());
 
-const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-
 app.use('/api-docs', swaggerUi.serve);
-app.get('/api-docs', swaggerUi.setup(swaggerDocument, { customCssUrl: CSS_URL }));
+app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 const users = []
 
