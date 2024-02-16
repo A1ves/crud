@@ -103,7 +103,11 @@ app.get("/swagger-info", (request, response) => {
     return response.json(swaggerDocument)
 }),
 
-app.get("/api-docs", (request, response) => {
+app.get("/docs/redocs", (request, response) => {
+    response.sendFile(path.join(__dirname, "index.html"))
+})
+
+app.get("/docs/swagger", (request, response) => {
     response.sendFile(path.join(__dirname, "index2.html"))
 })
 
