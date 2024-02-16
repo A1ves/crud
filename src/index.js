@@ -3,10 +3,11 @@ const { v4: uuidv4 } = require("uuid");
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const path = require('path');
 
 app.use(express.json());
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const users = []
 
@@ -96,6 +97,14 @@ app.delete("/account" ,verifyUser, (request, response) =>{
     users.splice(index, 1);
 
     return response.status(200).send(users);
+}),
+
+app.get("/swagger-info", (request, response) => {
+    return response.json(swaggerDocument)
+}),
+
+app.get("/api-docs", (request, response) => {
+    response.sendFile(path.join(__dirname, "index.html"))
 })
 
 app.listen(8000);
