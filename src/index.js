@@ -104,7 +104,7 @@ app.get("/swagger-info", (request, response) => {
 }),
 
 app.get("/api-docs", (request, response) => {
-    response.sendFile(path.join(__dirname, "index.html"))
+    response.sendFile(path.join(__dirname, "index2.html"))
 })
 
 app.listen(8000);
